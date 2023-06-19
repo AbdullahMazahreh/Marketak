@@ -1,11 +1,122 @@
-nav {
-    height: 9vh;
+header {
+    height: 11vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.container-fluid{
+.header-leftside{
     height: 100%;
+    display: flex;
+    align-items: center;
 }
 
-.logo-img{
-    height: 100%;
+.header-leftside img {
+    height: 30%;
+}
+
+.header-middleside{
+    display: flex;
+    gap: 30px;
+}
+
+.header-middleside a {
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+    text-decoration: none;
+    color: inherit;
+}
+
+.header-middleside a:hover {
+    cursor: pointer;
+    scale: 1.05;
+}
+
+.link-home{
+    font-weight: 600;
+}
+
+.header-rightside{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.search-container:hover,
+.cart-container:hover {
+    cursor: pointer;
+    box-shadow: 0 0 10px 1px rgb(175, 175, 175);
+}
+
+.search-container,
+.cart-container{
+    padding: 10px;
+    box-shadow: 0 0 5px 1px rgb(175, 175, 175);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+}
+
+.signin-btn{
+    padding: 10px 20px;
+    background-color: #9E3040;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 17px;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    cursor: pointer;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+}
+
+.signin-btn:hover {
+    box-shadow: 0 0 7px 1px #9E3040;
+}
+
+.theme-toggler {
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+    cursor: pointer;
+    padding: 7px ;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    box-shadow: 0 0 2px rgb(254, 106, 106);
+    display: grid;
+    place-items: center;
+    color: rgb(254, 106, 106);
+}
+
+.theme-toggler:hover {
+    box-shadow: 0 0 10px rgb(254, 106, 106);
+} 
+
+.BsSun{
+    font-size: 20px;
 }
