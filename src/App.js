@@ -1,25 +1,22 @@
 import "./App.css";
-import { Fragment, useEffect, useState } from "react";
-import { Navbar } from "./components/Index";
+import { Fragment, useContext, useEffect, useState } from "react";
+import { Navbar, Home } from "./components/Index";
 import { BrowserRouter } from "react-router-dom";
-import { ProductsList } from "./context/Context";
-import axios from "axios";
+import { allData } from "./context/Context";
+import Register from "./components/register/Register";
 
 function App() {
-  const [products, setProducts] = useState([]);
+  const { products, fetchProducts } = useContext(allData);
   useEffect(() => {
-    axios.get("http://localhost:5001/products")
-    .then((res) => setProducts(res.data))
-  }, [products])
+    fetchProducts();
+  }, [products]);
   return (
     <Fragment>
-      <ProductsList.Provider value={products}>
-        <BrowserRouter>
-          <div className="big-container">
-            <Navbar />
-          </div>
-        </BrowserRouter>
-      </ProductsList.Provider>
+      <BrowserRouter>
+        <div className="big-container">
+          <Navbar />
+        </div>
+      </BrowserRouter>
     </Fragment>
   );
 }
