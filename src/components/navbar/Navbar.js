@@ -1,11 +1,13 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import logo from "./marketak-high-resolution-logo-black-on-transparent-background.png";
 import "./navbar.css";
 import { Route, Routes, Link } from "react-router-dom";
 import { Products, Home } from "../Index";
 import { BsSun } from "react-icons/bs";
+import { allData } from "../../context/Context";
 
 function Navbar() {
+  const { isSignedIn, setIsSignedIn } = useContext(allData);
   return (
     <Fragment>
       <header>
@@ -22,20 +24,6 @@ function Navbar() {
           <div className="link-contactus">Contact Us</div>
         </div>
         <div className="header-rightside">
-          <div className="search-container">
-            <svg
-              width="17"
-              height="17"
-              viewBox="0 0 23 23"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M21.8007 20.8121L16.1182 15.2204C17.6063 13.6037 18.5206 11.4655 18.5206 9.1127C18.5199 4.07957 14.3742 0 9.25993 0C4.14564 0 0 4.07957 0 9.1127C0 14.1458 4.14564 18.2254 9.25993 18.2254C11.4697 18.2254 13.4964 17.4611 15.0883 16.1904L20.7929 21.8042C21.0708 22.078 21.5221 22.078 21.8001 21.8042C22.0787 21.5304 22.0787 21.0859 21.8007 20.8121ZM9.25993 16.8234C4.93268 16.8234 1.42477 13.3712 1.42477 9.1127C1.42477 4.85421 4.93268 1.40204 9.25993 1.40204C13.5872 1.40204 17.0951 4.85421 17.0951 9.1127C17.0951 13.3712 13.5872 16.8234 9.25993 16.8234Z"
-                fill="#232323"
-              />
-            </svg>
-          </div>
           <div className="cart-container">
             <svg
               width="17"
@@ -58,7 +46,15 @@ function Navbar() {
               />
             </svg>
           </div>
-          <button className="signin-btn">Sign In</button>
+          {isSignedIn ? (
+            <Fragment>
+              <img src="" alt="profile" />{" "}
+              <button className="signin-btn">Sign Out</button>{" "}
+            </Fragment>
+          ) : (
+            <button className="signin-btn">Sign In</button>
+          )}
+
           <div className="theme-toggler">
             <BsSun className="BsSun" />
           </div>

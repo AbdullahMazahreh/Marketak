@@ -7,6 +7,7 @@ export function Provider({children}){
     const [products, setProducts] = useState([])
     const [imageSliderData, setImageSliderData] = useState([])
     const [users, setUsers] = useState([])
+    const [isSignedIn, setIsSignedIn] = useState(false);
     const fetchProducts = () => {
         axios.get("http://localhost:5001/products")
         .then((res) => setProducts(res.data))
@@ -20,7 +21,9 @@ export function Provider({children}){
         fetchProducts,
         products,
         imageSliderData,
-        users
+        users,
+        isSignedIn,
+        setIsSignedIn
     }
     return (
         <allData.Provider value={valueToshare}>
