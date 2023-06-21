@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
-import { ProductsList } from '../../context/Context'
+import { allData } from '../../context/Context'
 
 function Products() {
-    const {products} = useContext(ProductsList)
+    const {products} = useContext(allData)
   return (
     <div>
       {products.map((item) => {

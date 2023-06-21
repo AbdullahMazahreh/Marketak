@@ -1,12 +1,15 @@
 import "./App.css";
 import { Fragment, useContext, useEffect, useState } from "react";
-import { Navbar } from "./components/Index";
+import { Navbar, Home } from "./components/Index";
 import { BrowserRouter } from "react-router-dom";
-import { ProductsList } from "./context/Context";
-import axios from "axios";
+import { allData } from "./context/Context";
+import Register from "./components/register/Register";
 
 function App() {
-
+  const { products, fetchProducts } = useContext(allData);
+  useEffect(() => {
+    fetchProducts();
+  }, []);
   return (
     <Fragment>
       <BrowserRouter>

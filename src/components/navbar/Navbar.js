@@ -2,8 +2,8 @@ import React, { Fragment } from "react";
 import logo from "./marketak-high-resolution-logo-black-on-transparent-background.png";
 import "./navbar.css";
 import { Route, Routes, Link } from "react-router-dom";
-import { Products } from "../Index";
-import { BsSun } from "react-icons/bs"
+import { Products, Home } from "../Index";
+import { BsSun } from "react-icons/bs";
 
 function Navbar() {
   return (
@@ -13,7 +13,9 @@ function Navbar() {
           <img src={logo} alt="..." />
         </div>
         <div className="header-middleside">
-          <div className="link-home">Home</div>
+          <Link className="link-home" to="/">
+            Home
+          </Link>
           <Link className="link-products" to="/products">
             Products
           </Link>
@@ -64,6 +66,7 @@ function Navbar() {
       </header>
       <Routes>
         <Route path="/products" element={<Products />}></Route>
+        <Route path="/" element={<Home />}></Route>
       </Routes>
     </Fragment>
   );
