@@ -4,6 +4,7 @@ import { Navbar, Home } from "./components/Index";
 import { BrowserRouter } from "react-router-dom";
 import { allData } from "./context/Context";
 import Register from "./components/register/Register";
+import Login from "./components/login/login";
 
 function App() {
   const { products, fetchProducts } = useContext(allData);
