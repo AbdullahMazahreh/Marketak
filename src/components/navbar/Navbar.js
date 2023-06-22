@@ -5,6 +5,8 @@ import { Route, Routes, Link } from "react-router-dom";
 import { Products, Home, Profile, Weather } from "../Index";
 import { allData } from "../../context/Context";
 
+import ProductDetails from "../products/ProductDetails";
+
 function Navbar() {
   const { isSignedIn, setIsSignedIn, isSelectedHandler, isSelected } =
     useContext(allData);
@@ -139,6 +141,7 @@ function Navbar() {
         <Route path="/products" element={<Products />}></Route>
         <Route path="/" element={<Home />}></Route>
         <Route path="/profile" element={<Profile />}></Route>
+        <Route path="/products/:productId" element={<ProductDetails />}></Route>
       </Routes>
     </Fragment>
   );

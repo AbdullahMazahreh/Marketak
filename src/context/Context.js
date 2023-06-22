@@ -25,6 +25,7 @@ export function Provider({ children }) {
   const isSelectedHandler = (e) => {
     setIsSelected(e.target.id);
   };
+   
 
   const valueToshare = {
     setProducts,

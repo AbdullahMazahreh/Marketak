@@ -3,11 +3,6 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 0 10px white;
-    position: sticky;
-    z-index: 1;
-    top: 0;
-    background-color: white;
 }
 
 header.dark {
