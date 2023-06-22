@@ -20,6 +20,7 @@ export function Provider({children}){
         axios.get("http://localhost:5001/users")
         .then((res) => setUsers(res.data))
     }
+   
       
     const valueToshare = {
         setProducts,

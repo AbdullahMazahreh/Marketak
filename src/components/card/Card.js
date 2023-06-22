@@ -1,10 +1,11 @@
 import React, { Fragment } from 'react'
 import "./card.css"
+import { Link } from 'react-router-dom'
 
-function Card({ title, description, price, image }) {
+function Card({ title, description, price, image ,id}) {
   return (
     <Fragment>
-        <div className='card-container'>
+        <Link to={`/products/${id}`} className='card-container'>
             <div className='card-image'>
                 <img src={image} alt={title} />
             </div>
@@ -13,9 +14,9 @@ function Card({ title, description, price, image }) {
             </div>
             <div className='card-info'>
                 <div className='card-price'>{price}$</div>
-                <button className='addtocard-btn'>Add Cart</button>
+                <button className='addtocardd-btn'>Add Cart</button>
             </div>
-        </div> 
+        </Link> 
     </Fragment>
   )
 }

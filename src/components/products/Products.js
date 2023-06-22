@@ -1,11 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { allData } from "../../context/Context";
 import Card from "../card/Card";
 import "./product.css";
 import ProductDetails from "./ProductDetails";
 import { Route, Routes, Link } from "react-router-dom";
+import axios from "axios";
 
 function Products() {
+  const[categories,setCategories]=useState([])
   const { products } = useContext(allData);
   const [currentPage, setCurrentPage] = useState(1);
   const recordsPage = 4;
@@ -14,6 +16,14 @@ function Products() {
   const records = products.slice(firstIndex, lastIndex);
   const npage = Math.ceil(products.length / recordsPage);
   const numbers = [...Array(npage + 1).keys()].slice(1);
+
+   useEffect(()=>{
+    
+     axios.get(`http://localhost:5001/categories`)
+   .then((res) => setCategories(res.data))
+   },[])
+
+ 
 
   function nextPage() {
     if (currentPage !== npage) setCurrentPage(currentPage + 1);
@@ -28,10 +38,12 @@ function Products() {
   return (
     <div className="products-container">
       <div className="products-categories">
-        <button className="products-btn">clik</button>
-        <button className="products-btn">clik</button>
-        <button className="products-btn">clik</button>
-        <button className="products-btn">clik</button>
+         {
+          categories.map((cat)=>{
+            return   <button key={cat} className="products-btn">{cat}</button>
+          })
+        }
+         
       </div>
 
       <div className="products-main">
@@ -43,6 +55,7 @@ function Products() {
                   <div className="product-card">
                     <Card
                       key={item.id}
+                      id={item.id}
                       title={item.title}
                       description={item.description}
                       price={item.price}
