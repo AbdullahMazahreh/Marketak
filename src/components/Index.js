@@ -8,6 +8,7 @@ import Delivery from "./delivery/Delivery";
 import Featuredproducts from "./featuredproducts/Featuredproducts";
 import Testimonials from "./testimonials/Testimonials";
 import Weather from "./weather/Weather"
+import ProductsCard from "./productsCard/ProductsCard";
 
 export {
   Navbar,
@@ -20,4 +21,5 @@ export {
   Featuredproducts,
   Testimonials,
   Weather,
+  ProductsCard
 };

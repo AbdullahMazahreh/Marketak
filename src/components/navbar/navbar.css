@@ -3,10 +3,11 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-header.dark {
-    background-color: rgb(35,39,47);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: white;
+    box-shadow: 0 0 10px white;
 }
 
 .header-leftside{

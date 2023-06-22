@@ -241,12 +241,6 @@
       }
     }
   ],
-  "categories": [
-    "electronics",
-    "jewelery",
-    "men's clothing",
-    "women's clothing"
-  ],
   "imageSliderData": [
     {
       "id": 1,
@@ -297,14 +291,12 @@
       }
     }
   ],
-
   "categories": [
     "electronics",
     "jewelery",
     "men's clothing",
     "women's clothing"
-    ],
-    
+  ],
   "users": [
     {
       "email": "a",

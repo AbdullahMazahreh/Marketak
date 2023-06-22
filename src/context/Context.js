@@ -9,6 +9,7 @@ export function Provider({ children }) {
   const [users, setUsers] = useState([]);
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [isSelected, setIsSelected] = useState("home");
+  const [currentCart, setCurrentCart] = useState([]);
   const fetchImageSliderData = () => {
     axios
       .get("http://localhost:5001/imageSliderData")
@@ -40,6 +41,8 @@ export function Provider({ children }) {
     isSelected,
     setIsSelected,
     isSelectedHandler,
+    currentCart,
+    setCurrentCart
   };
   return <allData.Provider value={valueToshare}>{children}</allData.Provider>;
 }

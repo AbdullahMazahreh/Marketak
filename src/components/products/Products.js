@@ -1,29 +1,32 @@
 import React, { useContext, useEffect, useState } from "react";
 import { allData } from "../../context/Context";
-import Card from "../card/Card";
 import "./product.css";
-import ProductDetails from "./ProductDetails";
-import { Route, Routes, Link } from "react-router-dom";
 import axios from "axios";
+import { ProductsCard } from "../Index";
 
 function Products() {
-  const[categories,setCategories]=useState([])
+  const [categories, setCategories] = useState([]);
   const { products } = useContext(allData);
   const [currentPage, setCurrentPage] = useState(1);
-  const recordsPage = 4;
+  const [currentCategory, setCurrentCategory] = useState("");
+  const recordsPage = 6;
   const lastIndex = recordsPage * currentPage;
   const firstIndex = lastIndex - recordsPage;
-  const records = products.slice(firstIndex, lastIndex);
-  const npage = Math.ceil(products.length / recordsPage);
+  const [searchedProduct, setSearchedProduct] = useState("");
+  const filteredProducts = products
+    .filter((item) => item.category.includes(currentCategory))
+    .filter((item) =>
+      item.description.toLowerCase().includes(searchedProduct.toLowerCase())
+    );
+  const records = filteredProducts.slice(firstIndex, lastIndex);
+  const npage = Math.ceil(filteredProducts.length / recordsPage);
   const numbers = [...Array(npage + 1).keys()].slice(1);
-
-   useEffect(()=>{
-    
-     axios.get(`http://localhost:5001/categories`)
-   .then((res) => setCategories(res.data))
-   },[])
-
- 
+  console.log(records);
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5001/categories`)
+      .then((res) => setCategories(res.data));
+  }, []);
 
   function nextPage() {
     if (currentPage !== npage) setCurrentPage(currentPage + 1);
@@ -37,23 +40,49 @@ function Products() {
 
   return (
     <div className="products-container">
-      <div className="products-categories">
-         {
-          categories.map((cat)=>{
-            return   <button key={cat} className="products-btn">{cat}</button>
-          })
-        }
-         
-      </div>
-
       <div className="products-main">
+        <div className="product-right">
+          <input
+            type="search"
+            id="product-search"
+            placeholder="Search for a product"
+            value={searchedProduct}
+            onChange={(e) => setSearchedProduct(e.target.value)}
+          />
+          <button
+            className="products-btn"
+            onClick={(e) => {
+              setCurrentCategory("");
+              setCurrentPage(1);
+            }}
+          >
+            {" "}
+            All Products
+          </button>
+          {categories.map((cat) => {
+            return (
+              <button
+                key={cat}
+                id={cat}
+                className="products-btn"
+                onClick={(e) => {
+                  setCurrentCategory(e.target.id);
+                  setCurrentPage(1);
+                }}
+              >
+                {cat}
+              </button>
+            );
+          })}
+        </div>
         <div className="product-leftside">
           <div className="product-items">
             {records.map((item) => {
               return (
                 <>
                   <div className="product-card">
-                    <Card
+                    <ProductsCard
+                      item={item}
                       key={item.id}
                       id={item.id}
                       title={item.title}
@@ -69,7 +98,7 @@ function Products() {
           <ul className="product-pagination">
             <li className="page-item">
               {
-                <a href="#" className="page-link" onClick={prePage}>
+                <a className="page-link" onClick={prePage}>
                   Prev
                 </a>
               }
@@ -78,7 +107,6 @@ function Products() {
               return (
                 <li className="page-item" key={i}>
                   <a
-                    href="#"
                     className={`page-item ${currentPage === n ? "active" : ""}`}
                     onClick={() => changPage(n)}
                   >
@@ -89,22 +117,14 @@ function Products() {
             })}
             <li className="page-item">
               {
-                <a href="#" className="page-link" onClick={nextPage}>
+                <a className="page-link" onClick={nextPage}>
                   Next
                 </a>
               }
             </li>
           </ul>
         </div>
-        <div className="product-right">
-          <input type="search" id="product-search" />
-          <button className="products-btn">clik</button>
-          <button className="products-btn">clik</button>
-          <button className="products-btn">clik</button>
-          <button className="products-btn">clik</button>
-        </div>
       </div>
-      
     </div>
   );
 }
