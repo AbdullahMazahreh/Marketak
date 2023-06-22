@@ -15,7 +15,7 @@ function Card({ title, description, price, image }) {
                 <div className='card-price'>{price}$</div>
                 <button className='addtocard-btn'>Add Cart</button>
             </div>
-        </div>
+        </div> 
     </Fragment>
   )
 }

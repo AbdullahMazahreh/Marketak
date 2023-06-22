@@ -6,6 +6,8 @@ import { Products, Home } from "../Index";
 import { BsSun } from "react-icons/bs";
 import { allData } from "../../context/Context";
 
+import ProductDetails from "../products/ProductDetails";
+
 function Navbar() {
   const { isSignedIn, setIsSignedIn } = useContext(allData);
   return (
@@ -63,6 +65,7 @@ function Navbar() {
       <Routes>
         <Route path="/products" element={<Products />}></Route>
         <Route path="/" element={<Home />}></Route>
+        <Route path="/products/:productId" element={<ProductDetails />}></Route>
       </Routes>
     </Fragment>
   );
