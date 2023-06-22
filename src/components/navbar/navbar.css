@@ -10,10 +10,15 @@ header {
     background-color: white;
 }
 
+header.dark {
+    background-color: rgb(35,39,47);
+}
+
 .header-leftside{
     height: 100%;
     display: flex;
     align-items: center;
+    gap: 10px;
 }
 
 .header-leftside img {
@@ -22,7 +27,7 @@ header {
 
 .header-middleside{
     display: flex;
-    gap: 30px;
+    gap: 5px;
 }
 
 .header-middleside a {
@@ -40,8 +45,17 @@ header {
     scale: 1.05;
 }
 
-.link-home{
-    font-weight: 600;
+.link {
+    padding: 5px 10px;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+
+.link-active{ 
+    background-color: rgb(237, 236, 236);
 }
 
 .header-rightside{
@@ -124,4 +138,84 @@ header {
 
 .BsSun{
     font-size: 20px;
+}
+
+.header-img-container{
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+}
+
+.header-img-container{
+    height: 100%;
+}
+
+.burger-menu{
+    display: none;
+}
+
+.side-bar a {
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+    text-decoration: none;
+    color: inherit;
+}
+
+.side-bar { 
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-grow: 1;
+}
+
+.side-bar-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    background-color: rgb(255, 255, 255);
+    border-right: 2px solid black;
+    width: 250px;
+    box-shadow: 0 0 10px black;
+    left: -2rem;
+    box-sizing: border-box;
+    padding: 60px 30px;
+}
+
+.side-bar-x{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+@media (max-width: 870px) {
+    .burger-menu{
+        display: block;
+    }
+
+    .header-middleside{
+        display: none;
+    }
+}
+
+@media (max-width: 510px) {
+    .header-leftside img {
+        display: none;
+    }
+
+    .side-bar-container{
+        left: 0;
+    }
+
+    header{
+        padding: 0 1rem;
+    }
 }

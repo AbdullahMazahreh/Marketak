@@ -1,27 +1,102 @@
-import React, { Fragment, useContext } from "react";
+import React, { Fragment, useContext, useState } from "react";
 import logo from "./marketak-high-resolution-logo-black-on-transparent-background.png";
 import "./navbar.css";
 import { Route, Routes, Link } from "react-router-dom";
-import { Products, Home } from "../Index";
-import { BsSun } from "react-icons/bs";
+import { Products, Home, Profile, Weather } from "../Index";
 import { allData } from "../../context/Context";
 
 function Navbar() {
-  const { isSignedIn, setIsSignedIn } = useContext(allData);
+  const { isSignedIn, setIsSignedIn, isSelectedHandler, isSelected } =
+    useContext(allData);
+  const [isNavOpened, setIsNavOpened] = useState(false);
   return (
     <Fragment>
       <header>
+        {isNavOpened ? (
+          <div className="side-bar-container">
+            <div
+              className="side-bar-x"
+              onClick={() => setIsNavOpened(!isNavOpened)}
+            >
+              <svg
+                width="40"
+                height="40"
+                viewBox="0 0 12 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M2.22 2.22C2.28956 2.15033 2.37218 2.09507 2.46312 2.05736C2.55406 2.01965 2.65155 2.00024 2.75 2.00024C2.84845 2.00024 2.94593 2.01965 3.03687 2.05736C3.12782 2.09507 3.21043 2.15033 3.28 2.22L6 4.939L8.72 2.22C8.7896 2.1504 8.87223 2.09519 8.96316 2.05752C9.0541 2.01985 9.15157 2.00047 9.25 2.00047C9.34843 2.00047 9.44589 2.01985 9.53683 2.05752C9.62777 2.09519 9.7104 2.1504 9.78 2.22C9.8496 2.2896 9.90481 2.37223 9.94248 2.46316C9.98014 2.5541 9.99953 2.65157 9.99953 2.75C9.99953 2.84843 9.98014 2.9459 9.94248 3.03683C9.90481 3.12777 9.8496 3.2104 9.78 3.28L7.061 6L9.78 8.72C9.92056 8.86056 9.99953 9.05121 9.99953 9.25C9.99953 9.44879 9.92056 9.63943 9.78 9.78C9.63943 9.92056 9.44879 9.99953 9.25 9.99953C9.05121 9.99953 8.86056 9.92056 8.72 9.78L6 7.061L3.28 9.78C3.13943 9.92056 2.94879 9.99953 2.75 9.99953C2.55121 9.99953 2.36056 9.92056 2.22 9.78C2.07943 9.63943 2.00047 9.44879 2.00047 9.25C2.00047 9.05121 2.07943 8.86056 2.22 8.72L4.939 6L2.22 3.28C2.15033 3.21043 2.09507 3.12782 2.05736 3.03687C2.01965 2.94593 2.00024 2.84845 2.00024 2.75C2.00024 2.65155 2.01965 2.55406 2.05736 2.46312C2.09507 2.37218 2.15033 2.28956 2.22 2.22Z"
+                  fill="black"
+                />
+              </svg>
+            </div>
+            <div className="side-bar">
+              <img src={logo} alt="..." />
+              <Link
+                className={isSelected === "home" ? "link-active link" : "link"}
+                to="/"
+                id="home"
+                onClick={(e) => isSelectedHandler(e)}
+              >
+                Home
+              </Link>
+              <Link
+                className={
+                  isSelected === "products" ? "link-active link" : "link"
+                }
+                to="/products"
+                id="products"
+                onClick={(id) => isSelectedHandler(id)}
+              >
+                Products
+              </Link>
+              <div className="link-contactus">Contact Us</div>
+            </div>
+            <Weather />
+          </div>
+        ) : null}
         <div className="header-leftside">
+          <div
+            className="burger-menu"
+            onClick={() => setIsNavOpened(!isNavOpened)}
+          >
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4 12H20M4 6H20M4 18H20"
+                stroke="black"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
           <img src={logo} alt="..." />
         </div>
         <div className="header-middleside">
-          <Link className="link-home" to="/">
+          <Link
+            className={isSelected === "home" ? "link-active link" : "link"}
+            to="/"
+            id="home"
+            onClick={(e) => isSelectedHandler(e)}
+          >
             Home
           </Link>
-          <Link className="link-products" to="/products">
+          <Link
+            className={isSelected === "products" ? "link-active link" : "link"}
+            to="/products"
+            id="products"
+            onClick={(id) => isSelectedHandler(id)}
+          >
             Products
           </Link>
-          <div className="link-contactus">Contact Us</div>
+          <div className="link-contactus">About Us</div>
         </div>
         <div className="header-rightside">
           <div className="cart-container">
@@ -48,21 +123,22 @@ function Navbar() {
           </div>
           {isSignedIn ? (
             <Fragment>
-              <img src="" alt="profile" />{" "}
+              <Link to="/profile" onClick={(id) => isSelectedHandler(id)}>
+                <div className="header-img-container">
+                  <img src="" alt="profile" id="profile" />
+                </div>
+              </Link>
               <button className="signin-btn">Sign Out</button>{" "}
             </Fragment>
           ) : (
             <button className="signin-btn">Sign In</button>
           )}
-
-          <div className="theme-toggler">
-            <BsSun className="BsSun" />
-          </div>
         </div>
       </header>
       <Routes>
         <Route path="/products" element={<Products />}></Route>
         <Route path="/" element={<Home />}></Route>
+        <Route path="/profile" element={<Profile />}></Route>
       </Routes>
     </Fragment>
   );

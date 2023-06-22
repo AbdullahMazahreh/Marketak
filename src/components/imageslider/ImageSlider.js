@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useState } from "react";
+import React, { Fragment, useContext, useState, useEffect } from "react";
 import "./imageslider.css";
 import { allData } from "../../context/Context";
 
@@ -17,6 +17,14 @@ function ImageSlider() {
       </Fragment>
     );
   });
+  useEffect(() => {
+    const slideInterval = setInterval(() => {
+      setImgIndex((prevIndex) => (prevIndex + 1) % imageSliderData.length);
+    }, 3000);
+    return () => {
+      clearInterval(slideInterval);
+    };
+  }, [imageSliderData.length]);
   const displayDots = dots.map((item, i) => {
     return (
       <div
