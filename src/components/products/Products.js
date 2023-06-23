@@ -16,7 +16,7 @@ function Products() {
   const filteredProducts = products
     .filter((item) => item.category.includes(currentCategory))
     .filter((item) =>
-      item.description.toLowerCase().includes(searchedProduct.toLowerCase())
+      item.title.toLowerCase().includes(searchedProduct.toLowerCase())
     );
   const records = filteredProducts.slice(firstIndex, lastIndex);
   const npage = Math.ceil(filteredProducts.length / recordsPage);
@@ -96,7 +96,7 @@ function Products() {
             })}
           </div>
           <ul className="product-pagination">
-            <li className="page-item">
+            <li className="page-item prev-btn">
               {
                 <a className="page-link" onClick={prePage}>
                   Prev
@@ -115,7 +115,7 @@ function Products() {
                 </li>
               );
             })}
-            <li className="page-item">
+            <li className="page-item next-btn">
               {
                 <a className="page-link" onClick={nextPage}>
                   Next

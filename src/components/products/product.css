@@ -5,6 +5,7 @@
 
 .products-container {
   padding: 10px;
+  width: 100%;
 }
 
 .products-btn {
@@ -39,9 +40,7 @@
 
 .product-items {
   display: flex;
-  width: 100%;
   gap: 10px;
-  padding: 10px;
   flex-wrap: wrap;
 }
 
@@ -82,5 +81,36 @@
     display: flex;
     flex-direction: column;
     gap: 50px;
-    width: 80%;
+    width: 100%;
+}
+
+@media (max-width: 950px) {
+  .products-main {
+    flex-direction: column;
+  }
+
+  .product-items{
+    justify-content: center;
+  }
+
+  .product-right {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  #product-search{
+    width: 100%;
+  }
+
+  .products-btn{
+    padding: 30px 10px;
+  }
+}
+
+@media (max-width:500px) {
+  .next-btn,
+  .prev-btn{
+    display: none;
+  }
 }

@@ -86,3 +86,8 @@
   box-shadow: 0 0 10px #9e3040;
 }
 
+@media (max-width: 320px) {
+  .products-card-container{
+    width: 270px;
+  }
+}
