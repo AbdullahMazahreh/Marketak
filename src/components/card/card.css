@@ -1,4 +1,6 @@
 .card-container{
+    text-decoration: none;
+    color: black;
     padding: 1rem;
     background-color: #F3F5F6;
     display: flex;
@@ -19,6 +21,7 @@
     height: 45%;
     background-color: white;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     overflow: hidden;
@@ -50,7 +53,7 @@
     font-size: 1.3rem;
 }
 
-.addtocard-btn{
+.addtocardd-btn{
     background-color: #9E3040;
     color: white;
     border: none;

@@ -2,7 +2,7 @@
   "products": [
     {
       "id": 1,
-      "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+      "title": "Fjallraven - Foldsack No",
       "price": 109.95,
       "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
       "category": "men's clothing",
@@ -241,12 +241,18 @@
       }
       }
   ],
+  "categories": [
+    "electronics",
+    "jewelery",
+    "men's clothing",
+    "women's clothing"
+  ],
   "users": [
     {
       "email": "a",
       "username": "a",
       "password": "a",
-      "image": "",
+      "image": "https://cdn.discordapp.com/attachments/1112627096804655246/1121372700796014603/profile-user-round-red-icon-symbol-download-png-11639594337tco5j3n0ix-removebg-preview.png",
       "previousorders": [],
       "currentcard": [],
       "darttheme": false,
@@ -256,7 +262,7 @@
       "email": "b",
       "username": "b",
       "password": "b",
-      "image": "",
+      "image": "https://cdn.discordapp.com/attachments/1112627096804655246/1121372700796014603/profile-user-round-red-icon-symbol-download-png-11639594337tco5j3n0ix-removebg-preview.png",
       "previousorders": [],
       "currentcard": [],
       "darttheme": false,
@@ -266,7 +272,7 @@
       "email": "c",
       "username": "c",
       "password": "c",
-      "image": "",
+      "image": "https://cdn.discordapp.com/attachments/1112627096804655246/1121372700796014603/profile-user-round-red-icon-symbol-download-png-11639594337tco5j3n0ix-removebg-preview.png",
       "previousorders": [],
       "currentcard": [],
       "darttheme": false,

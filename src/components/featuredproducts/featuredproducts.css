@@ -3,12 +3,19 @@
     flex-direction: column;
     gap: 30px;
     margin-bottom: 60px;
+    width: 100%;
+}
+
+.link-products{
+    text-decoration: none;
+    color: inherit;
 }
 
 .all-cards-container{
     display: flex;
     gap: 40px;
     flex-wrap: wrap;
+    width: 60%;
 }
 
 .featured-products-title{
@@ -17,9 +24,9 @@
 
 .featured-products-info{
     display: flex;
+    gap: 2vw;
     width: 100%;
     justify-content: space-between;
-    gap: 5vw;
 }
 
 .featured-products-img{
@@ -30,6 +37,7 @@
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
+    width: 40%;
 }
 
 .featured-products-img-info{
@@ -51,4 +59,27 @@
 
 .featured-products-img img {
     height: 100%;
+}
+
+
+@media (max-width: 1054px) {
+    .featured-products-info{
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .featured-products-img{
+        width: 100%;
+        height: 50vh;
+    }
+
+    .all-cards-container{
+        width: 100%;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .featured-products-img-info{
+        top: 30%;
+    }
 }
