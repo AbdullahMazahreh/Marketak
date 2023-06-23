@@ -1,17 +1,24 @@
-import React, { Fragment } from 'react'
-import "./home.css"
-import ImageSlider from '../imageslider/ImageSlider'
-import Register from '../register/Register'
-import ProductsBoard from '../adminDashboard/productsBoard'
+import React, { Fragment } from "react";
+import "./home.css";
+import ImageSlider from "../imageslider/ImageSlider";
+import Delivery from "../delivery/Delivery";
+import Featuredproducts from "../featuredproducts/Featuredproducts";
+import Testimonials from "../testimonials/Testimonials";
+
 
 function Home() {
   return (
     <Fragment>
-        {/* <ImageSlider /> */}
-        <Register />
-        <ProductsBoard/>
+      <ImageSlider />
+        <Delivery />
+        <Featuredproducts />
+        <Testimonials />
+
+   
+    
+      
     </Fragment>
-  )
+  );
 }
 
-export default Home
+export default Home;
