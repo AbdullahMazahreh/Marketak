@@ -5,12 +5,16 @@ import { ImageSlider, Delivery, Featuredproducts, Testimonials } from "../Index"
 function Home() {
   return (
     <Fragment>
-        <ImageSlider />
+      <ImageSlider />
         <Delivery />
         <Featuredproducts />
         <Testimonials />
+
+   
+    
+      
     </Fragment>
-  )
+  );
 }
 
-export default Home
+export default Home;
