@@ -1,8 +1,8 @@
 import React, { Fragment } from "react";
 import logo from "./marketak-high-resolution-logo-black-on-transparent-background.png";
 import "./navbar.css";
-import { Route, Routes, Link } from "react-router-dom";
-import { Products, Home } from "../Index";
+import {Routes, Route,Link } from 'react-router-dom';
+import { Products, Home, Register ,Login} from "../Index";
 import { BsSun } from "react-icons/bs";
 
 function Navbar() {
@@ -58,7 +58,7 @@ function Navbar() {
               />
             </svg>
           </div>
-          <button className="signin-btn">Sign In</button>
+          <Link to={'Login'}><button className="signin-btn">Sign In</button></Link>
           <div className="theme-toggler">
             <BsSun className="BsSun" />
           </div>

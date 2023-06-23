@@ -1,7 +1,7 @@
 import "./App.css";
 import { Fragment, useContext, useEffect, useState } from "react";
 import { Navbar, Home } from "./components/Index";
-import { BrowserRouter } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { allData } from "./context/Context";
 import Register from "./components/register/Register";
 import Login from "./components/login/login";
@@ -13,11 +13,13 @@ function App() {
   }, [products]);
   return (
     <Fragment>
-      <BrowserRouter>
         <div className="big-container">
           <Navbar />
         </div>
-      </BrowserRouter>
+        <Routes>
+          <Route path={'/Login'} element={<Login />}/>
+          <Route path={'/Register'} element={<Register />}/>
+        </Routes>
     </Fragment>
   );
 }

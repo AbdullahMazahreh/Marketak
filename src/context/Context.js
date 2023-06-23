@@ -7,24 +7,35 @@ export function Provider({children}){
     const [products, setProducts] = useState([])
     const [imageSliderData, setImageSliderData] = useState([])
     const [users, setUsers] = useState([])
-    const fetchProducts = () => {
-        axios.get("http://localhost:5001/products")
-        .then((res) => setProducts(res.data))
-        axios.get("http://localhost:5001/imageSliderData")
+    const [isSignedIn, setIsSignedIn] = useState(false);
+    const fetchImageSliderData = () => {
+        axios.get("http://localhost:5001/imageSliderData%22")
         .then((res) => setImageSliderData(res.data))
-        axios.get("http://localhost:5001/users")
+    }
+    const fetchProducts = () => {
+        axios.get("http://localhost:5001/products%22")
+        .then((res) => setProducts(res.data))
+    }
+    const fetchUsers = () => {
+        axios.get("http://localhost:5001/users%22")
         .then((res) => setUsers(res.data))
     }
+
+
     const valueToshare = {
         setProducts,
-        fetchProducts,
+        fetchImageSliderData,
         products,
         imageSliderData,
-        users
+        users,
+        isSignedIn,
+        setIsSignedIn,
+        fetchProducts,
+        fetchUsers
     }
     return (
         <allData.Provider value={valueToshare}>
             {children}
         </allData.Provider>
     )
-} 
+}

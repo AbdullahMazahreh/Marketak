@@ -149,4 +149,19 @@
 .second-cirlce{
     bottom: -110px;
     left: -160px;
+} 
+
+#already{
+    text-decoration: underline;
+    cursor: pointer;
+    color:black;
+    width:fit-content;
+}
+
+.red{
+    color: red;
+    font-size: 1.2rem;
+}.green{
+    color: rgb(41, 177, 41);
+    font-size: 1.2rem;
 }
