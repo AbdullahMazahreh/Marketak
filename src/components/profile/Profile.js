@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { Weather } from "../Index";
 import { useContext } from "react";
 import { allData } from "../../context/Context";
+import YouTubeVideo from "../YouTubeVideo/YouTubeVideo";
+
 
 function Profile() {
   const [isSelected, setIsSelected] = useState("settings");
@@ -28,6 +30,7 @@ function Profile() {
             </Link>
           </div>
           <Weather />
+          <YouTubeVideo videoId={"2aXHIbwHkAw"}/>
         </div>
         <div className="profile-data">
               <div className="username-container">

@@ -16,7 +16,7 @@ function App() {
   }, []);
   useEffect(() => {
     fetchUsers();
-  }, [users]);
+  }, []);
   return (
     <>
       <div className="big-container">
