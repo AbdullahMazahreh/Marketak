@@ -1,11 +1,23 @@
 .summary-card {
   background-color: #f5f7ff;
-  max-width: 31rem;
+  width: 100%;
   height: 30rem;
   display: flex;
   flex-direction: column;
   padding: 20px;
   border-radius: 20px;
+}
+
+.proceed-btn{
+  padding: 10px 20px ;
+  background-color: #9e3040;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  border: none;
+  color: white;
 }
 
 .summary-card p {

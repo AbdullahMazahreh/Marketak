@@ -2,12 +2,15 @@ import React, { Fragment, useState } from "react";
 import "./profile.css";
 import { Link } from "react-router-dom";
 import { Weather } from "../Index";
+import { useContext } from "react";
+import { allData } from "../../context/Context";
 
 function Profile() {
   const [isSelected, setIsSelected] = useState("settings");
   const isSelectedHandler = (e) => {
     setIsSelected(e.target.id);
   };
+  const { currentUser } = useContext(allData);
   return (
     <Fragment>
       <div className="profile-container">
@@ -23,19 +26,17 @@ function Profile() {
             >
               Account settings
             </Link>
-            <Link
-              id="orders"
-              className={
-                isSelected === "orders" ? "profile-nav active" : "profile-nav"
-              }
-              onClick={(e) => isSelectedHandler(e)}
-            >
-              Previous orders
-            </Link>
           </div>
           <Weather />
         </div>
-        <div className="profile-data"></div>
+        <div className="profile-data">
+              <div className="username-container">
+                UserName: {currentUser.username}
+              </div>
+              <div className="email-container">
+                E-mail: {currentUser.email}
+              </div>
+        </div>
       </div>
     </Fragment>
   );

@@ -1,8 +1,11 @@
 import "./Summary.css";
-import { useState } from "react";
-function Summary({products}) {
-const [subtotal, setSubTotal] = useState(0);
-
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { allData } from "../../context/Context";
+function Summary({ products }) {
+  const navigate = useNavigate();
+  const { setCurrentCart } = useContext(allData);
   return (
     <div className="summary-card">
       <h2>Summary</h2>
@@ -10,34 +13,27 @@ const [subtotal, setSubTotal] = useState(0);
       <p className="shippinp">
         Enter your destination to get a shipping estimate.
       </p>
-      <span>Apply Discount code</span>
       <p>
-        <span>subtotal</span>
-        <span>{subtotal}$</span>
-      </p>
-      <p>
-        <span>Shipping</span>
-        <span>150$</span>
         <span className="shippinp">
           (Standard Rate - Price may vary depending on the item/destination.
           TECS Staff will contact you.)
         </span>
       </p>
-      <p>
-        <span>Tax</span>
-        <span>150$</span>
-      </p>
-      <p>
-        <span>GST</span>
-        <span>150$</span>
-      </p>
-      <p>
-        <span> Order Totall </span>
-        <span>150$</span>
-      </p>
-
-      <a href="#">Proceed to Checkout</a>
-      <a href="#">Checkout with Paypal</a>
+      <button
+      className="proceed-btn"
+        href=""
+        onClick={() => {
+          Swal.fire({
+            title: `Are You Sure You Want To Proceed?`,
+            showCancelButton: true,
+          }).then(() => {
+            setCurrentCart([]);
+            navigate("/");
+          });
+        }}
+      >
+        Proceed to Checkout
+      </button>
     </div>
   );
 }
