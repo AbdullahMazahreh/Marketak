@@ -9,7 +9,7 @@ function Login() {
   const [users, setUsers] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isExist, setIsExist] = useState(true);
+  const [isExist, setIsExist] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const {
     setCurrentUser,
