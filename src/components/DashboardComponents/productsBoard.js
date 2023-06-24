@@ -3,12 +3,11 @@ import { allData } from "../../context/Context";
 import axios from "axios";
 import "./productsBoard.css";
 import Swal from "sweetalert2";
-import { Route, Routes, Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import EditProcuts from "./EditProcuts";
 
 function ProductsBoard() {
   const { products, fetchProducts } = useContext(allData);
-  const params = useParams();
   useEffect(() => {
     getAllProducts();
   }, []);

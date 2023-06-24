@@ -1,7 +1,7 @@
 import { createContext, useState } from "react";
 import axios from "axios";
-
 export const allData = createContext({});
+<<<<<<< HEAD
 
 // export function Provider({children}){
 //     const [products, setProducts] = useState([])
@@ -44,6 +44,8 @@ export const allData = createContext({});
 //         </allData.Provider>
 //     )
 // } 
+=======
+>>>>>>> a0d306e7ad5b8f4ca561b0fe6ce4ee8c5ae94e73
 export function Provider({ children }) {
   const [products, setProducts] = useState([]);
   const [imageSliderData, setImageSliderData] = useState([]);
@@ -67,7 +69,6 @@ export function Provider({ children }) {
   const isSelectedHandler = (e) => {
     setIsSelected(e.target.id);
   };
-   
 
   const valueToshare = {
     setProducts,
@@ -83,7 +84,7 @@ export function Provider({ children }) {
     setIsSelected,
     isSelectedHandler,
     currentCart,
-    setCurrentCart
+    setCurrentCart,
   };
   return <allData.Provider value={valueToshare}>{children}</allData.Provider>;
 }

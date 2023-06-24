@@ -1,7 +1,8 @@
 import "./App.css";
-import { Fragment, useContext, useEffect } from "react";
-import { Navbar } from "./components/Index";
-import { BrowserRouter } from "react-router-dom";
+import {useContext, useEffect} from "react";
+import {Login, Register} from "./components/Index";
+import { Navbar, Home } from "./components/Index";
+import { BrowserRouter,Routes, Route } from "react-router-dom";
 import { allData } from "./context/Context";
 
 function App() {
@@ -17,13 +18,15 @@ function App() {
     fetchUsers();
   }, [users]);
   return (
-    <Fragment>
-      <BrowserRouter>
+    <>
         <div className="big-container">
           <Navbar />
         </div>
-      </BrowserRouter>
-    </Fragment>
+        <Routes>
+          <Route path={'/Login'} element={<Login />}/>
+          <Route path={'/Register'} element={<Register />}/>
+        </Routes>
+    </>
   );
 }
 

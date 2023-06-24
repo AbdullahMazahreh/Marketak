@@ -1,6 +1,7 @@
 import React, { Fragment, useContext, useState } from "react";
 import logo from "./marketak-high-resolution-logo-black-on-transparent-background.png";
 import "./navbar.css";
+<<<<<<< HEAD
 import { Route, Routes, Link } from "react-router-dom";
 import {
   Products,
@@ -11,6 +12,11 @@ import {
   AdminDashboard,
   EditProcuts
 } from "../Index";
+=======
+import {Routes, Route,Link } from 'react-router-dom';
+import { Products, Home, Register ,Login,Weather, Profile} from "../Index";
+import { BsSun } from "react-icons/bs";
+>>>>>>> a0d306e7ad5b8f4ca561b0fe6ce4ee8c5ae94e73
 import { allData } from "../../context/Context";
 
 import ProductDetails from "../products/ProductDetails";
@@ -131,6 +137,10 @@ function Navbar() {
               />
             </svg>
           </div>
+          <Link to={'Login'}><button className="signin-btn">Sign In</button></Link>
+          <div className="theme-toggler">
+            <BsSun className="BsSun" />
+          </div>
           {isSignedIn ? (
             <Fragment>
               <Link to="/profile" onClick={(id) => isSelectedHandler(id)}>
@@ -140,9 +150,8 @@ function Navbar() {
               </Link>
               <button className="signin-btn">Sign Out</button>{" "}
             </Fragment>
-          ) : (
-            <button className="signin-btn">Sign In</button>
-          )}
+          ) :null 
+          }
         </div>
       </header>
       <Routes>
