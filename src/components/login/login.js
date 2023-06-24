@@ -11,7 +11,7 @@ function Login() {
   const [users, setUsers] = useState({});
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isExist, setIsExist] = useState(true);
+  const [isExist, setIsExist] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   // const [showAlert, setShowAlert] = useState(false);
 
@@ -60,13 +60,8 @@ function Login() {
 
 const showValidation = ()=>{
   if(!isExist){
-    
     return (<div className="validation"><h2>login failed invalid email-id or password</h2></div>)
-    
   }
-  // else{
-  // return (<div className="success"><h2>success</h2></div>)
-  // }
 }
 
 // handel the eye Password
@@ -77,7 +72,7 @@ const togglePasswordVisibility = () => {
 const HandelSubmit = (e) => {
     e.preventDefault();
     console.log(users);
-    checkEmail();
+    checkEmail()
   };
   return (
     <Fragment>
@@ -129,9 +124,8 @@ const HandelSubmit = (e) => {
                 Sign In
               </button>
             </form>
-            
             {showValidation()}
-              
+            {/* <Link to={'/'} className="register-input-submit" onClick={checkEmail}>Sign In</Link> */}
           </div>
         </div>
       </div>

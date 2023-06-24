@@ -1,5 +1,5 @@
 .image-slider{
-    height: 80vh;
+    height: 89vh;
     background-color: #9E3040;
     box-sizing: border-box;
     padding: 0 6rem;
@@ -65,4 +65,45 @@
 
 .dot.active {
     padding: 6px 12px;
+}
+
+@media (max-width: 1054px) {
+    .image-slider-img{
+        height: 50%;
+    }
+
+    .image-slider{
+        height: 70vh;
+        padding: 0 3rem;
+    }
+}
+
+@media (max-width: 720px) {
+    .product-description{
+        display: none;
+    }
+
+    .image-slider-img{
+        height: 80%;
+    }
+
+    .image-slider{
+        height: 30vh;
+        padding: 0 1rem;
+    }
+
+    .product-title{
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .image-slider{
+        height: 20vh;
+        padding: 0 1rem;
+    }
+
+    .product-title{
+        font-size: 1.3rem;
+    }
 }

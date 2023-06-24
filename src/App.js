@@ -1,18 +1,24 @@
 import "./App.css";
-import { Fragment, useContext, useEffect, useState } from "react";
+import {useContext, useEffect} from "react";
+import {Login, Register} from "./components/Index";
 import { Navbar, Home } from "./components/Index";
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter,Routes, Route } from "react-router-dom";
 import { allData } from "./context/Context";
-import Register from "./components/register/Register";
-import Login from "./components/login/login";
 
 function App() {
-  const { products, fetchProducts } = useContext(allData);
+  const { products, fetchImageSliderData, fetchProducts, fetchUsers } =
+    useContext(allData);
+  useEffect(() => {
+    fetchImageSliderData();
+  }, []);
   useEffect(() => {
     fetchProducts();
-  }, [products]);
+  }, []);
+  useEffect(() => {
+    fetchUsers();
+  }, []);
   return (
-    <Fragment>
+    <>
         <div className="big-container">
           <Navbar />
         </div>
@@ -20,7 +26,7 @@ function App() {
           <Route path={'/Login'} element={<Login />}/>
           <Route path={'/Register'} element={<Register />}/>
         </Routes>
-    </Fragment>
+    </>
   );
 }
 

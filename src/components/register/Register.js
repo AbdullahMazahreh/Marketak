@@ -12,7 +12,8 @@ function Register() {
     email: "",
     username: "",
     password: "",
-    image: "",
+    image:
+      "https://cdn.discordapp.com/attachments/1112627096804655246/1121372700796014603/profile-user-round-red-icon-symbol-download-png-11639594337tco5j3n0ix-removebg-preview.png",
     previousorders: [],
     currentcard: [],
     darktheme: false,
