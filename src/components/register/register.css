@@ -1,6 +1,9 @@
 .register-contianer{
     height: 70vh;
     display: flex;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    position: relative;
 }
 
 .register-leftside {
@@ -78,6 +81,7 @@
     gap: 10px;
     width: 100%;
     align-items: center;
+    padding-top: 100px;
 }
 
 .form-register-title-1{
@@ -165,3 +169,9 @@
     color: rgb(41, 177, 41);
     font-size: 1.2rem;
 }
+
+/* .password-alerts{
+    position: absolute;
+    bottom: 500px;
+
+} */

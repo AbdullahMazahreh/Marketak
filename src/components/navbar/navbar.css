@@ -137,8 +137,8 @@ header {
 }
 
 .header-img-container{
-    height: 100px;
-    width: 100px;
+    height: 40px;
+    width: 40px;
     border-radius: 50px;
     -webkit-border-radius: 50px;
     -moz-border-radius: 50px;
@@ -146,7 +146,7 @@ header {
     -o-border-radius: 50px;
 }
 
-.header-img-container{
+.header-img-container img{
     height: 100%;
 }
 

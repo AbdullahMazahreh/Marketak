@@ -4,7 +4,7 @@ import {
   ImageSlider,
   Delivery,
   Featuredproducts,
-  Testimonials,
+  Testimonials
 } from "../Index";
 // import AdminDashboard from "../DashboardComponents/adminDashboard";
 

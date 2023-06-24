@@ -1,20 +1,24 @@
 import { Fragment, useEffect, useState, useContext } from "react";
 import "../login/login.css";
-// import Register from "../register/Register";
-// import { allData } from "./context/Context";
-// import Alert from '../Alert/AlertPanle';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { allData } from "../../context/Context";
 
 function Login() {
   const [agent, setAgent] = useState({});
-  const [users, setUsers] = useState({});
+  const [users, setUsers] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isExist, setIsExist] = useState(false);
+  const [isExist, setIsExist] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
-  // const [showAlert, setShowAlert] = useState(false);
-
+  const {
+    setCurrentUser,
+    setIsSignedIn,
+    currentUser,
+    setCurrentCart,
+    currentCart,
+  } = useContext(allData);
+  const navigate = useNavigate();
   // get info from the server
   const serverUrl = "http://localhost:5001/users";
   const getAllUserData = () => {
@@ -40,39 +44,43 @@ function Login() {
     for (let i = 0; i < users.length; i++) {
       if (email === users[i].email && password === users[i].password) {
         setIsExist(true);
-      }else{
+        setCurrentUser(users[i]);
+      } else {
         setIsExist(false);
       }
-      if(email.length === 0){
+      if (email.length === 0) {
         setIsExist(false);
       }
     }
   };
+  const currentUserHandler = () => {};
+  console.log(currentUser);
+  const showValidation = () => {
+    if (!isExist) {
+      return (
+        <div className="validation">
+          <h2>login failed invalid email-id or password</h2>
+        </div>
+      );
+    }
+  };
 
+  // handel the eye Password
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
-  // const handleShowAlert = () => {
-  //   setShowAlert(true);
-  // };
-
-  // const handleCloseAlert = () => {
-  //   setShowAlert(false);
-  // };
-
-const showValidation = ()=>{
-  if(!isExist){
-    return (<div className="validation"><h2>login failed invalid email-id or password</h2></div>)
-  }
-}
-
-// handel the eye Password
-const togglePasswordVisibility = () => {
-  setShowPassword(!showPassword);
-};
-
-const HandelSubmit = (e) => {
+  const HandelSubmit = (e) => {
     e.preventDefault();
-    console.log(users);
-    checkEmail()
+    checkEmail();
+
+    if (email === "admin" && password === "admin") {
+      navigate("/admindashboard");
+    }
+    if (isExist === true) {
+      setIsSignedIn(true);
+      navigate("/");
+    }
   };
   return (
     <Fragment>
@@ -107,25 +115,29 @@ const HandelSubmit = (e) => {
                 onChange={HandelEmail}
               />
               <div className="passwordFelid">
-              <input
-                type={showPassword ? "text" : "password"}
-                placeholder="Password"
-                className="register-input-field passwordFelid"
-                onChange={HandelPassword}
-              />
-              <i class="fa fa-eye" aria-hidden="false" onMouseDown={togglePasswordVisibility}></i>
-              
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Password"
+                  className="register-input-field passwordFelid"
+                  onChange={HandelPassword}
+                />
+                <i
+                  class="fa fa-eye"
+                  aria-hidden="false"
+                  onMouseDown={togglePasswordVisibility}
+                ></i>
               </div>
-              {/* <Link to={'/'}><button className="register-input-submit">Sign In</button></Link> */}
               <Link to={"/Register"}>
-              <span id="Sign-up">Sign up</span>
+                <span id="Sign-up">Sign up</span>
               </Link>
-              <button className="register-input-submit" >
+              <button
+                className="register-input-submit"
+                onClick={() => currentUserHandler()}
+              >
                 Sign In
               </button>
             </form>
             {showValidation()}
-            {/* <Link to={'/'} className="register-input-submit" onClick={checkEmail}>Sign In</Link> */}
           </div>
         </div>
       </div>
@@ -134,8 +146,3 @@ const HandelSubmit = (e) => {
 }
 
 export default Login;
-
-// <div className="validation"><h2>login failed invalid email-id or password</h2></div>
-
-
-

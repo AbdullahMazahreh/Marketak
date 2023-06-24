@@ -14,6 +14,9 @@ import AddProducts from "./DashboardComponents/AddProducts";
 import AdminDashboard from "./DashboardComponents/adminDashboard";
 import UsersBoard from "./DashboardComponents/UsersBoard";
 import EditProcuts from "./DashboardComponents/EditProcuts";
+import Footer from "./Footer/Footer";
+import Cartpage from "./Cartpage/Cartpage";
+import AboutUS from "./AboutUS/AboutUS"
 
 export {
   Navbar,
@@ -31,5 +34,8 @@ export {
   AddProducts,
   AdminDashboard,
   UsersBoard,
-  EditProcuts
+  EditProcuts,
+  Footer,
+  Cartpage,
+  AboutUS
 };

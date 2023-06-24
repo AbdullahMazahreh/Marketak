@@ -22,6 +22,7 @@ function ProductDetails() {
         id={details.id}
         category={details.category}
         rate={details.rating}
+        item={details}
       />
     </>
   );

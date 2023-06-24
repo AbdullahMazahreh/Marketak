@@ -1,7 +1,6 @@
 import { createContext, useState } from "react";
 import axios from "axios";
 export const allData = createContext({});
-<<<<<<< HEAD
 
 // export function Provider({children}){
 //     const [products, setProducts] = useState([])
@@ -25,7 +24,7 @@ export const allData = createContext({});
 //     const editProductById = (product)=>{
 //             setProductEdit (product)
 //     }
-      
+
 //     const valueToshare = {
 //         setProducts,
 //         fetchImageSliderData,
@@ -43,9 +42,7 @@ export const allData = createContext({});
 //             {children}
 //         </allData.Provider>
 //     )
-// } 
-=======
->>>>>>> a0d306e7ad5b8f4ca561b0fe6ce4ee8c5ae94e73
+// }
 export function Provider({ children }) {
   const [products, setProducts] = useState([]);
   const [imageSliderData, setImageSliderData] = useState([]);
@@ -53,6 +50,7 @@ export function Provider({ children }) {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [isSelected, setIsSelected] = useState("home");
   const [currentCart, setCurrentCart] = useState([]);
+  const [currentUser, setCurrentUser] = useState({});
   const fetchImageSliderData = () => {
     axios
       .get("http://localhost:5001/imageSliderData")
@@ -85,6 +83,8 @@ export function Provider({ children }) {
     isSelectedHandler,
     currentCart,
     setCurrentCart,
+    currentUser,
+    setCurrentUser,
   };
   return <allData.Provider value={valueToshare}>{children}</allData.Provider>;
 }

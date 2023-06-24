@@ -1,7 +1,8 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useContext, useState } from "react";
 import "./register.css";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { allData } from "../../context/Context";
 
 function Register() {
   const emailRegex =
@@ -16,22 +17,14 @@ function Register() {
       "https://cdn.discordapp.com/attachments/1112627096804655246/1121372700796014603/profile-user-round-red-icon-symbol-download-png-11639594337tco5j3n0ix-removebg-preview.png",
     previousorders: [],
     currentcard: [],
-    darktheme: false,
   });
-
-  // const usernameRegex = /^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$/;
-  // const [showValidation, setshowValidation] = useState(false);
-  // const [usernameValidation, setusernameValidation] = useState(false);
-  // const [isPasswordValid, setIsPasswordValid] = useState(false);
-  // const [EightCharPassword, setEightCharPassword] = useState(false)
-  // const [sympolPassword, setsympolPassword] = useState(false);
-  // const [CapitalLetter, setCapitalLetter] = useState(false);
-  // const [changeUsernameValidation, setchangeUsernameValidation] = useState(false);
 
   const [showPassword, setShowPassword] = useState(false);
   const [emailValidation, setemailValidation] = useState(false);
   const [passwordValidation, setpasswordValidation] = useState(false);
   const [Color, setColor] = useState("red");
+  const { users } = useContext(allData);
+  const navigate = useNavigate();
 
   const userNameHandler = (e) => {
     const value = e.target.value;
@@ -39,8 +32,8 @@ function Register() {
       ...prevAccount,
       username: value,
     }));
-    // changeColorUsername();
   };
+
   const emailHandler = (e) => {
     const value = e.target.value;
     setNewAccount((prevAccount) => ({
@@ -60,9 +53,18 @@ function Register() {
   };
 
   const submitHandler = (e) => {
-    e.preventDefault();
+    let isVerified = true;
     const newAccountToBeStored = newAccount;
-    axios.post("http://localhost:5001/users", newAccountToBeStored);
+    for (let j = 0; j < users.length; j++) {
+      if (users[j].email === newAccountToBeStored.email) {
+        isVerified = false;
+      }
+    }
+    if (isVerified) {
+      axios.post("http://localhost:5001/users", newAccountToBeStored);
+      navigate("/Login");
+    }
+    e.preventDefault();
   };
 
   const togglePasswordVisibility = () => {
@@ -74,7 +76,6 @@ function Register() {
       setColor("red");
     }
     if (newAccount.email.match(emailRegex)) {
-      console.log(newAccount.email);
       setColor("green");
     }
     if (!newAccount.email.match(emailRegex)) {
@@ -87,7 +88,6 @@ function Register() {
       setColor("red");
     }
     if (newAccount.password.match(passwordRegex)) {
-      console.log(newAccount.password);
       setColor("green");
     }
     if (!newAccount.password.match(passwordRegex)) {
@@ -137,6 +137,13 @@ function Register() {
                   changeColorPassword();
                 }}
               />
+              {emailValidation ? (
+                <ul>
+                  <li className={Color}>
+                    Email have to have '@(gmail.com, net.com, ect)'
+                  </li>
+                </ul>
+              ) : null}
               <div className="passwordFelid">
                 <input
                   type={showPassword ? "text" : "password"}
@@ -156,6 +163,13 @@ function Register() {
                   aria-hidden="false"
                   onMouseDown={togglePasswordVisibility}
                 ></i>
+                {passwordValidation ? (
+                  <ul className="password-alerts">
+                    <li className={Color}>At least 8 chars</li>
+                    <li className={Color}>At least one symbol</li>
+                    <li className={Color}>At least one Capital letter</li>
+                  </ul>
+                ) : null}
               </div>
               <Link to={"/Login"}>
                 {" "}
@@ -168,20 +182,6 @@ function Register() {
                 onClick={(e) => submitHandler(e)}
               />
             </form>
-            {emailValidation ? (
-              <ul>
-                <li className={Color}>
-                  Email have to have '@(gmail.com, net.com, ect)'
-                </li>
-              </ul>
-            ) : null}
-            {passwordValidation ? (
-              <ul>
-                <li className={Color}>At least 8 chars</li>
-                <li className={Color}>At least one symbol</li>
-                <li className={Color}>At least one Capital letter</li>
-              </ul>
-            ) : null}
           </div>
         </div>
       </div>

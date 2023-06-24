@@ -21,7 +21,6 @@ function Weather() {
         "https://cdn.discordapp.com/attachments/1112627096804655246/1121504875587576008/weather-clear-symbolic-icon-511x512-zfj6vb21-removebg-preview.png"
       );
     }
-    console.log(weather)
   }, [weather]);
   return (
     <Fragment>

@@ -1,5 +1,16 @@
+import { useContext } from "react";
 import "./CardDetails.css";
-function CardDetails({ title, description, price, image, category, rate }) {
+import { allData } from "../../context/Context";
+function CardDetails({
+  title,
+  description,
+  price,
+  image,
+  category,
+  rate,
+  item,
+}) {
+  const { isSignedIn, setCurrentCart, currentCart } = useContext(allData);
   return (
     <>
       {rate ? (
@@ -43,7 +54,14 @@ function CardDetails({ title, description, price, image, category, rate }) {
               <div className="CardDetails-title-2">{title}</div>
             </div>
             <h3 className="CardDetails-price">Price: {price}$</h3>
-            <button className="addtocard-btn">add Cart</button>
+            {isSignedIn ? (
+              <button
+                className="addtocardd-btn"
+                onClick={() => setCurrentCart([...currentCart, item])}
+              >
+                Add Cart
+              </button>
+            ) : null}
           </div>
         </div>
       ) : null}

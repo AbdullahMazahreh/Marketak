@@ -4,7 +4,6 @@ import { allData } from "../../context/Context";
 
 function ImageSlider() {
   const { imageSliderData } = useContext(allData);
-  console.log(imageSliderData);
   const dots = [1, 2, 3, 4];
   const [imgIndex, setImgIndex] = useState(0);
   const displayImages = imageSliderData.map((item) => {
