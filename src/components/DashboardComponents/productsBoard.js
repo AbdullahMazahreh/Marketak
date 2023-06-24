@@ -1,13 +1,14 @@
-import { useContext, useEffect } from "react";
+import { Fragment, useContext, useEffect } from "react";
 import { allData } from "../../context/Context";
 import axios from "axios";
 import "./productsBoard.css";
 import Swal from "sweetalert2";
-import { Route, Routes, Link } from "react-router-dom";
+import { Route, Routes, Link, useParams } from "react-router-dom";
+import EditProcuts from "./EditProcuts";
 
 function ProductsBoard() {
   const { products, fetchProducts } = useContext(allData);
-
+  const params = useParams();
   useEffect(() => {
     getAllProducts();
   }, []);
@@ -31,13 +32,14 @@ function ProductsBoard() {
     });
   };
 
-  const editProduct =(product) =>{
-
-  }
+  const editProduct = (product) => {};
 
   return (
     <>
       <h1>Products Page</h1>
+      <Link to="/addproduct" className="dash-add-product">
+        Add Product
+      </Link>
       <div className="dash-rightside">
         <table className="product-table">
           <thead>
@@ -49,21 +51,38 @@ function ProductsBoard() {
             </tr>
           </thead>
           <tbody>
-            {products.map((product) => {
-              return (
-                <tr key={product.id}>
-                  <td>{product.id}</td>
-                  <td>{product.title}</td>
-                  <td>{product.price}</td>
-                  <td>
-                    <button className="del-btn" onClick={() => deleteProduct(product)}>
-                      Delete
-                    </button>
-                    <button className="edit-btn" ocClick={() =>editProduct(product)} >Edit</button>
-                  </td>
-                </tr>
-              );
-            })}
+            <Fragment>
+              {products.map((product) => {
+                return (
+                  <tr key={product.id}>
+                    <td>{product.id}</td>
+                    <td>{product.title}</td>
+                    <td>{product.price}</td>
+                    <td>
+                      <button
+                        className="del-btn"
+                        onClick={() => deleteProduct(product)}
+                      >
+                        Delete
+                      </button>
+                      <button
+                        className="edit-btn"
+                        ocClick={() => editProduct(product)}
+                      >
+                        <Link
+                          to={{
+                            pathname: "/editproducts:productId",
+                            state: { product: product },
+                          }}
+                        >
+                          Edit
+                        </Link>
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </Fragment>
           </tbody>
         </table>
       </div>

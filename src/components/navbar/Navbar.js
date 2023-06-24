@@ -2,7 +2,15 @@ import React, { Fragment, useContext, useState } from "react";
 import logo from "./marketak-high-resolution-logo-black-on-transparent-background.png";
 import "./navbar.css";
 import { Route, Routes, Link } from "react-router-dom";
-import { Products, Home, Profile, Weather } from "../Index";
+import {
+  Products,
+  Home,
+  Profile,
+  Weather,
+  AddProducts,
+  AdminDashboard,
+  EditProcuts
+} from "../Index";
 import { allData } from "../../context/Context";
 
 import ProductDetails from "../products/ProductDetails";
@@ -142,6 +150,9 @@ function Navbar() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/profile" element={<Profile />}></Route>
         <Route path="/products/:productId" element={<ProductDetails />}></Route>
+        <Route path="/addProduct" element={<AddProducts />}></Route>
+        <Route path="/admindashboard" element={<AdminDashboard />}></Route>
+        <Route path="/editproducts:productId" element={<EditProcuts />}></Route>
       </Routes>
     </Fragment>
   );

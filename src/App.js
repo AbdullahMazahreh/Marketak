@@ -5,7 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import { allData } from "./context/Context";
 
 function App() {
-  const { products, fetchImageSliderData, fetchProducts, fetchUsers } =
+  const { products, fetchImageSliderData, fetchProducts, fetchUsers, users } =
     useContext(allData);
   useEffect(() => {
     fetchImageSliderData();
@@ -15,7 +15,7 @@ function App() {
   }, []);
   useEffect(() => {
     fetchUsers();
-  }, []);
+  }, [users]);
   return (
     <Fragment>
       <BrowserRouter>
