@@ -28,3 +28,11 @@
 .copy-right {
   color: #303030;
 }
+
+@media screen and (max-width: 725px) {
+.footer-wrap {
+    flex-direction: column;
+    width: 100%;
+}
+
+}

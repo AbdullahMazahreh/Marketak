@@ -210,16 +210,3 @@
 }
 
 
-@media only screen and (max-width: 600px) {
-  .register-contianer{
-    height: 90vh;
-    flex-direction: column;
-    /* padding: 20px; */
-  }
-  .register-leftside{
-    width: 100%;
-  }
-  .register-rightside {
-    width: 100%;
-  }
-}

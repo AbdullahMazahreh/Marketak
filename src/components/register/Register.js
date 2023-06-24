@@ -138,7 +138,7 @@ function Register() {
                 }}
               />
               {emailValidation ? (
-                <ul>
+                <ul className="email-alerts">
                   <li className={Color}>
                     Email have to have '@(gmail.com, net.com, ect)'
                   </li>
@@ -165,9 +165,7 @@ function Register() {
                 ></i>
                 {passwordValidation ? (
                   <ul className="password-alerts">
-                    <li className={Color}>At least 8 chars</li>
-                    <li className={Color}>At least one symbol</li>
-                    <li className={Color}>At least one Capital letter</li>
+                    <li className={Color}>At least 8 chars, one symbol and one Capital letter</li>
                   </ul>
                 ) : null}
               </div>
