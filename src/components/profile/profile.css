@@ -13,7 +13,10 @@
 
 .profile-data{
     width: 70%;
-    background-color: aqua;
+    display: flex;
+    gap: 50px;
+    flex-direction: column;
+    padding-top: 200px;
 }
 
 .dashboard-title{
@@ -50,4 +53,12 @@
     flex-direction: column;
     gap: 10px;
     padding: 20px 0;
+}
+
+.username-container{
+    font-size: 2.5rem;
+}
+
+.email-container{
+    font-size: 2.5rem;
 }

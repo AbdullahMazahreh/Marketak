@@ -16,9 +16,7 @@ const Cartpage = () => {
       setpro(initialData);
     });
   }, [currentCart, pro]);
-  const getPrices = (price) => {
-    return price;
-  };
+
 
   const HandelDelete = (e) => {
     const filteredProducts = pro.filter((item) => item.id !== e.target.id);
@@ -31,7 +29,7 @@ const Cartpage = () => {
     <div className="container-shoping">
       <h1 className="title">Shopping Cart</h1>
       <div className="cart">
-        <div>
+        <div className="cart-1">
           {pro.map((product) => (
             <Product
               key={product.id}
@@ -40,9 +38,8 @@ const Cartpage = () => {
             />
           ))}
         </div>
-
         <div className="summery">
-          <Summary products={pro} getPrice={getPrices} />
+          <Summary products={pro} />
         </div>
       </div>
     </div>
